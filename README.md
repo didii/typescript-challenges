@@ -30,3 +30,17 @@ Note that refreshing the Chrome window manually might result VSCode losing conne
 If you have a breakpoint that is not hit when it should be run, disconnect and reconnect VSCode.
 
 If VSCode does not want to connect, you most likely forgot to open the debug window. Otherwise, you'll have to debug in Chrome itself.
+
+## Challenges
+
+These challenges are sort-of ordered from easy to hard.
+Your experience might vary, depending on your knowledge of Java- and TypeScript.
+Click the title to navigate to the relevant readme.
+
+### [Typed SimpleChanges](./src/simple-changes/readme.md)
+
+Make Angulars `SimpleChanges` type, that `ngOnChanges` accept, properly typed.
+
+### [Simple Dependency Injection container](src/di-container/readme.md)
+
+Create a simple DI container that can resolve classes without dependencies by its own type, a different type, a factory function or plain value.
