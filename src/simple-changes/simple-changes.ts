@@ -11,16 +11,19 @@ class MyComponent implements OnChanges {
 
     public ngOnChanges(changes: SimpleChanges<MyComponent>) {
 
-        if (changes.id) { //<- no intellisense
-            let binary = changes.id.currentValue.toString(2); //<- currentValue is of type any
+        if (changes.id) { //<- intellisense
+            let binary = changes.id.currentValue.toString(2); //<- intellisense on every property
             console.log('Binary: ', binary);
         }
 
-        if (changes.name) { //<- no intellisense
-            let allCaps = changes.name.currentValue.toUpperCase(); //<- currentValue is of type any
+        if (changes.name) { //<- intellisense
+            let allCaps = changes.name.currentValue.toUpperCase(); //<- intellisense on every property
             console.log('Uppcased: ', allCaps);
         }
 
+        //NOTE: this should give a compilation error
+        if (changes.someNonExistingProperty) {
+            //this can never be reached in 'normal' Angular code
+        }
     }
 }
-
