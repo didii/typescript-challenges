@@ -2,6 +2,8 @@
  * First proper implementation of typed SimpleChanges. This adheres to every requirement.
  */
 
+import { MyComponent } from './my-component';
+
 /**
  * Sub-type of SimpleChanges to denote changes to a single property
  */
@@ -27,3 +29,22 @@ export type SimpleChanges<T> = {
     //    where T[K] the type of property K represents
     [K in keyof T]?: SimpleChange<T[K]>;
 };
+
+
+type Actual = SimpleChanges<MyComponent>;
+type Expected = {
+    id?: {
+        currentValue: number;
+        previousValue: number;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+    name?: {
+        currentValue: string;
+        previousValue: string;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+}
+type Assert = Expected extends Actual ? true : false;
+let assert: Assert = true;

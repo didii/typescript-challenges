@@ -3,6 +3,7 @@
  */
 
 import { OnInit, OnDestroy, OnChanges, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
+import { MyComponent } from './my-component';
 
 /**
  * An alias for all Angular lifecycle methods
@@ -62,3 +63,23 @@ export type SimpleChanges<T> = Partial<{
                                                     //    where T[K] is the type of property K from T
     [K in KeyOfExcept<T, AngularLifecycleMethods>]: SimpleChange<T[K]>;
 }>;
+
+
+
+type Actual = SimpleChanges<MyComponent>;
+type Expected = {
+    id?: {
+        currentValue: number;
+        previousValue: number;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+    name?: {
+        currentValue: string;
+        previousValue: string;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+}
+type Assert = Expected extends Actual ? true : false;
+let assert: Assert = true;

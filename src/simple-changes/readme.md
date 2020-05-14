@@ -25,18 +25,21 @@ type SomeType = {
 };
 type Actual = SimpleChanges<SomeType>;
 type Expected = {
-  id: {
-      currentValue: number;
-      previousValue: number;
-      isFirstChange: boolean;
-  };
-  name: {
-      currentValue: string;
-      previousValue: string;
-      isFirstChange: boolean;
-  };
-};
-type Assert = Actual extends Expected ? true : false; // Should be type true
+    id?: {
+        currentValue: number;
+        previousValue: number;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+    name?: {
+        currentValue: string;
+        previousValue: string;
+        firstChange: boolean;
+        isFirstChange(): boolean;
+    };
+}
+type Assert = Expected extends Actual ? true : false;
+let assert: Assert = true;
 ```
 
 So we expect the type `SimpleChanges<SomeType>` (or `Actual`) to be at least containing all properties of `Expected`.
