@@ -1,13 +1,13 @@
 import { Type } from "@angular/core";
 
 /**
- * Helper interface for our registrations to allow registrations using factories or values
+ * Helper interface for our registrations to allow registrations using factories or values.
  */
 export interface Registration<T> {
     type: Type<T>;
-    useType?: Type<T>;
-    useFactory?: () => T;
-    useValue?: T;
+    useType?: Type<any>;
+    useFactory?: () => any;
+    useValue?: any;
 }
 
 /** Our pretty container */
@@ -33,9 +33,9 @@ export class DiContainer {
         this._registrations.push(registration);
     }
 
-    public resolve<T>(type: Type<T>): T {
+    public resolve<T>(type: Type<T>): T | undefined {
         // Find the given registration based on the type
-        let registration = this._registrations.find(r => r.type === type);
+        let registration: Registration<T> | undefined = this._registrations.find(r => r.type === type);
 
         // Error when nothing was found
         if (!registration)
@@ -50,7 +50,7 @@ export class DiContainer {
         // When value: return value
         else if (registration.useValue)
             return registration.useValue;
-        // When none, just give null
-        return null;
+        // When none, return undefined
+        return;
     }
 }

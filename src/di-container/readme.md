@@ -1,7 +1,8 @@
 ## Challenge: Dependency Injection container
 
-Try to make a Dependency Injection Container.
-Use the file `di-container.ts` for your own implementation.
+Try to make a simple Dependency Injection Container.
+Use the file [di-container.ts](./di-container.ts) for your own implementation.
+A spec file is added so you can validate your changes.
 
 ### Requirements
 
