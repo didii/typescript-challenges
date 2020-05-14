@@ -1,5 +1,12 @@
 # TypeScript challenges
 
+This is a simple collection of some relatively exotic usages of TypeScripts stupidly powerful typing system.
+It is designed to show the power of TypeScript.
+Whether this power is a good or bad thing, is up to you to decide.
+
+If you do plan to make use of the most complex parts of its type system, please only do such that you can reduce the complexity to any client of your code.
+That is probably the only valid use-case for any exotic usage of this typing system.
+
 ## Setup
 
 Execute the following commands:
