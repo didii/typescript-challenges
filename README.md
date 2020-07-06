@@ -44,3 +44,10 @@ Make Angulars `SimpleChanges` type, that `ngOnChanges` accept, properly typed.
 ### [Simple Dependency Injection container](src/di-container/readme.md)
 
 Create a simple DI container that can resolve classes without dependencies by its own type, a different type, a factory function or plain value.
+
+### Options for a specific object
+
+Create mapping rules for an object by transforming its property types to some wrapper.
+It should distinguish between a primary type (`string`, `Date`) and other types (any other object).
+The primary types should be configurable.
+E.g. `{ id: number, name: string }` becomes `{ id: Options<number>, name: Options<string> }`.
