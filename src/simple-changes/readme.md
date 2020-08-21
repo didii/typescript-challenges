@@ -18,12 +18,14 @@ Make a typed implementation of the `SimpleChanges` of Angular (located in `@angu
 
 ### Example
 
+We expect the type `SimpleChanges<SomeComponent>` (or `Actual`) to *at least* contain all properties of `Expected`.
+
 ```ts
-type SomeType = {
+class SomeComponent = {
   id: number;
   name: string;
 };
-type Actual = SimpleChanges<SomeType>;
+type Actual = SimpleChanges<SomeComponent>;
 type Expected = {
     id?: {
         currentValue: number;
@@ -41,8 +43,6 @@ type Expected = {
 type Assert = Expected extends Actual ? true : false;
 let assert: Assert = true;
 ```
-
-So we expect the type `SimpleChanges<SomeType>` (or `Actual`) to be at least containing all properties of `Expected`.
 
 ### Solution
 
